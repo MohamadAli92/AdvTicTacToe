@@ -38,6 +38,12 @@ export default {
     winWays: [
       ["11", "22", "33"],
       ["13", "22", "31"],
+      ["11", "12", "13"],
+      ["21", "22", "23"],
+      ["31", "32", "33"],
+      ["11", "21", "31"],
+      ["12", "22", "32"],
+      ["13", "23", "33"],
     ],
     playerBlocks: { 0: [], 1: [] },
     gameIsDone: false,
@@ -69,20 +75,45 @@ export default {
     },
     checkForWinner() {
       for (const player in this.playerBlocks) {
-        if (Object.hasOwnProperty.call(this.playerBlocks, player)) {
-          const blocksArray = this.playerBlocks[player];
-          if (blocksArray.length >= 3) {
-            return (
-              (blocksArray[0][0] === blocksArray[1][0] &&
-                blocksArray[1][0] === blocksArray[2][0]) ||
-              (blocksArray[0][1] === blocksArray[1][1] &&
-                blocksArray[1][1] === blocksArray[2][1]) ||
-              blocksArray.every((item) => this.winWays[0].includes(item)) ||
-              blocksArray.every((item) => this.winWays[1].includes(item))
-            );
-          }
+        const blocksArray = this.playerBlocks[player];
+        if (blocksArray.length >= 3) {
+          let res = false;
+          this.winWays.forEach((winWay) => {
+            let valid = true;
+            winWay.forEach((el) => {
+              if (!blocksArray.includes(el)) valid = false;
+            });
+            if (valid) return (res = valid);
+          });
+          console.log(res);
+          if (res) return res;
+          // for (const way in this.winWays) {
+          //   if (Object.hasOwnProperty.call(this.winWays, way)) {
+          //     const wayArr = this.winWays[way];
+          //     // console.log;
+          //     wayArr.forEach((el) => {});
+          //     console.log(wayArr);
+          //     wayArr.every((item) => console.log(item));
+          //     // if ()
+          //     //   return true;
+          //   }
+          // }
+          // return this.winWays.some((way) =>
+          //   way.every((item) => blocksArray.includes(item))
+          // );
+
+          // return (
+          //   (blocksArray[0][0] === blocksArray[1][0] &&
+          //     blocksArray[1][0] === blocksArray[2][0]) ||
+          //   (blocksArray[0][1] === blocksArray[1][1] &&
+          //     blocksArray[1][1] === blocksArray[2][1]) ||
+          //   this.winWays[0].every((item) => blocksArray.includes(item)) ||
+          //   this.winWays[1].every((item) => blocksArray.includes(item))
+          // );
         }
+        // }
       }
+      // console.log("Cat");
       return false;
     },
   },
