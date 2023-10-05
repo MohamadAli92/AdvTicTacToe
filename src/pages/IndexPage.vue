@@ -1,6 +1,10 @@
+<!-- eslint-disable vue/no-parsing-error -->
+<!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <q-page class="flex flex-center">
-    <play-table :key="componentKey"></play-table>
+  <q-page class="flex flex-center page">
+    <div>
+      <play-table class="playTable" :key="componentKey"></play-table>
+    </div>
 
     <q-dialog
       v-model="persistent"
@@ -23,13 +27,14 @@
       </q-card>
     </q-dialog>
 
-    <!-- <q-btn label="Click me" color="primary" @click="reset" /> -->
+    <!-- <q-btn label="Click me" color="primary" @mouseenter="clickMe" class="btn" /> -->
   </q-page>
 </template>
 
 <script>
 import PlayTable from "src/components/PlayTable.vue";
 import { defineComponent } from "vue";
+import anime from "animejs/lib/anime.es.js";
 
 export default defineComponent({
   components: { PlayTable },
@@ -46,3 +51,23 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.page {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+</style>

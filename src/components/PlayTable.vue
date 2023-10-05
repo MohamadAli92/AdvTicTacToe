@@ -221,6 +221,7 @@ export default {
 
 table {
   background-color: black;
+  border-radius: 15px;
 }
 
 .disabled {
@@ -250,5 +251,6 @@ table {
   height: 200px;
   width: 200px;
   margin: 5px;
+  border-radius: 10px;
 }
 </style>
