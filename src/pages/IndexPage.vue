@@ -6,6 +6,67 @@
       <play-table class="playTable" :key="componentKey"></play-table>
     </div>
 
+    <q-page-sticky position="right" :offset="[30, 18]">
+      <q-btn
+        fab
+        icon="restart_alt"
+        padding="25px"
+        color="orange"
+        size="30px"
+        @click="reset"
+      />
+    </q-page-sticky>
+    <q-page-sticky position="bottom-right" :offset="[30, 30]">
+      <q-fab color="purple" icon="settings" direction="up">
+        <q-fab-action color="primary" @click="changeColor" icon="palette" />
+        <q-fab
+          color="amber"
+          text-color="black"
+          icon="keyboard_arrow_left"
+          direction="left"
+          padding="8px"
+        >
+          <q-fab-action
+            color="amber"
+            text-color="black"
+            @click="onClick"
+            icon="person"
+          />
+          <a
+            href="https://github.com/aiwnsjjw/AdvTicTacToe"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <q-fab-action
+              color="amber"
+              text-color="black"
+              @click="openGithub"
+              icon="code"
+            />
+          </a>
+        </q-fab>
+      </q-fab>
+    </q-page-sticky>
+
+    <q-dialog v-model="colorChanger" position="left">
+      <q-card class="color-picker-card">
+        <q-card-section>
+          <div class="picker-text text-weight-bold">Table around color</div>
+          <q-color
+            v-model="aroundColor"
+            no-header
+            no-footer
+            class="my-picker"
+          />
+        </q-card-section>
+        <q-card-section>
+          <div class="picker-text text-weight-bold">Table inner color</div>
+
+          <q-color v-model="innerColor" no-header no-footer class="my-picker" />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     <q-dialog
       v-model="persistent"
       persistent
@@ -35,6 +96,7 @@
 import PlayTable from "src/components/PlayTable.vue";
 import { defineComponent } from "vue";
 import anime from "animejs/lib/anime.es.js";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: { PlayTable },
@@ -42,11 +104,18 @@ export default defineComponent({
   data: () => ({
     componentKey: 0,
     persistent: false,
+    colorChanger: false,
+    aroundColor: "#bbe5ed",
+    innerColor: "#7180ac",
+    resetDialog: false,
   }),
   methods: {
     reset() {
       this.componentKey += 1;
       this.persistent = false;
+    },
+    changeColor() {
+      this.colorChanger = true;
     },
   },
 });
@@ -69,5 +138,25 @@ export default defineComponent({
   100% {
     background-position: 0% 50%;
   }
+}
+
+.my-picker {
+  margin-top: 5px;
+  background-color: rgba(28, 28, 28, 0.626);
+  border-radius: 10px;
+}
+
+.picker-text {
+  padding: 5px;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  border-bottom-style: solid;
+  border-radius: 40px;
+}
+
+.color-picker-card {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 </style>

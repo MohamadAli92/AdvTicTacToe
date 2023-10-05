@@ -5,7 +5,10 @@
     <table class="table" :key="componentKey">
       <tr v-for="indx in 3">
         <th v-for="indy in 3">
-          <div class="block">
+          <div
+            class="block"
+            :style="{ backgroundColor: this.$parent.$parent.aroundColor }"
+          >
             <small-table
               :id="String(indx) + String(indy)"
               :class="gamesStatus[String(indx) + String(indy)]"
@@ -202,7 +205,7 @@ export default {
 
 <style scoped>
 * {
-  transition-duration: 1s;
+  transition-duration: 0.5s;
 }
 .loading-page {
   position: fixed;
@@ -231,7 +234,7 @@ table {
 }
 
 .finishedX {
-  background-image: url("src\\assets\\bigCross.gif");
+  background-image: url("../bigCross.gif");
   background-position: center;
   background-color: white;
   transition-duration: 1s;
@@ -239,7 +242,7 @@ table {
 }
 
 .finishedO {
-  background-image: url("src\\assets\\bigCircle.gif");
+  background-image: url("../bigCircle.gif");
   background-position: center;
   background-color: white;
   background-size: 390px;

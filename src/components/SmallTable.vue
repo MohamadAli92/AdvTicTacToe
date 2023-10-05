@@ -7,6 +7,9 @@
           <div
             :class="blocks[String(indx) + String(indy)].class"
             @click="check(String(indx) + String(indy))"
+            :style="{
+              backgroundColor: this.$parent.$parent.$parent.innerColor,
+            }"
           >
             <img
               v-if="blocks[String(indx) + String(indy)].set"
@@ -53,11 +56,9 @@ export default {
     check(code) {
       if (!this.blocks[code].set && this.blocks[code].player === -1) {
         if (this.$parent.turn == 0)
-          this.blocks[code].source =
-            "src\\assets\\littleCircle.gif" + "?a=" + Math.random();
+          this.blocks[code].source = "littleCircle.gif" + "?a=" + Math.random();
         else
-          this.blocks[code].source =
-            "src\\assets\\littleCross.gif" + "?a=" + Math.random();
+          this.blocks[code].source = "littleCross.gif" + "?a=" + Math.random();
         this.blocks[code].player = this.$parent.turn;
         this.blocks[code].class = "setBlock";
         this.blocks[code].set = true;
@@ -141,6 +142,7 @@ table {
   width: 50px;
   height: 50px;
   margin: 1px;
+  transition-duration: 0.5s;
 }
 
 .setBlock {
