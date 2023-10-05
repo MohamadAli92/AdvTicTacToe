@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <!-- <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
@@ -11,15 +11,15 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title> Advanced TicTacToe </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
-    </q-header>
+    </q-header> -->
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+        <q-item-label header> Menu </q-item-label>
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -27,7 +27,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <router-view />
@@ -87,9 +87,9 @@ const linksList = [
 export default defineComponent({
   name: "MainLayout",
 
-  components: {
-    EssentialLink,
-  },
+  // components: {
+  //   EssentialLink,
+  // },
 
   setup() {
     const leftDrawerOpen = ref(false);
