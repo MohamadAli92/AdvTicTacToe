@@ -10,6 +10,11 @@
             :style="{
               backgroundColor: this.$parent.$parent.$parent.innerColor,
             }"
+            @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
+            @mouseleave="
+              $event.srcElement.style.backgroundColor =
+                this.$parent.$parent.$parent.innerColor
+            "
           >
             <img
               v-if="blocks[String(indx) + String(indy)].set"
@@ -117,6 +122,10 @@ export default {
       // console.log("Cat");
       return false;
     },
+    hoverBlock($event) {
+      console.log($event);
+      $event.srcElement.style.backgroundColor = "red";
+    },
   },
   watch: {
     // gameIsDone() {
@@ -168,10 +177,6 @@ table {
   height: 50px;
   margin: 1px;
 }
-.block:hover {
-  background-color: #2b4570;
-}
-
 .main {
   padding: 0px;
 }

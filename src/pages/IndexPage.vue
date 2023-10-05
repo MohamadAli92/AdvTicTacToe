@@ -13,7 +13,7 @@
         padding="25px"
         color="orange"
         size="30px"
-        @click="reset"
+        @click="showResetDialog"
       />
     </q-page-sticky>
     <q-page-sticky position="bottom-right" :offset="[30, 30]">
@@ -88,6 +88,24 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog
+      v-model="resetDialog"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
+      <q-card class="bg-teal text-white" style="width: 300px">
+        <q-card-section>
+          <div class="text-h6">Do you really want to restart game?</div>
+        </q-card-section>
+
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Yes" @click="componentKey += 1" v-close-popup />
+          <q-btn flat label="No" @click="resetDialog = false" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
     <!-- <q-btn label="Click me" color="primary" @mouseenter="clickMe" class="btn" /> -->
   </q-page>
 </template>
@@ -95,8 +113,6 @@
 <script>
 import PlayTable from "src/components/PlayTable.vue";
 import { defineComponent } from "vue";
-import anime from "animejs/lib/anime.es.js";
-import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: { PlayTable },
@@ -113,6 +129,9 @@ export default defineComponent({
     reset() {
       this.componentKey += 1;
       this.persistent = false;
+    },
+    showResetDialog() {
+      this.resetDialog = true;
     },
     changeColor() {
       this.colorChanger = true;
