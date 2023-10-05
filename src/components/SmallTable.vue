@@ -151,7 +151,7 @@ table {
   width: 50px;
   height: 50px;
   margin: 1px;
-  transition-duration: 0.5s;
+  transition-duration: 0.15s;
 }
 
 .setBlock {
