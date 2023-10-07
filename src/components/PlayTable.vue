@@ -16,40 +16,6 @@
           </div>
         </th>
       </tr>
-      <!-- <th>
-          <div class="block">
-            <small-table></small-table>
-          </div>
-        </th>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-        <th>
-          <div class="block"><small-table></small-table></div>
-        </th>
-      </tr> -->
     </table>
   </div>
 </template>
@@ -77,8 +43,6 @@ export default {
     fullGames: [],
     persistent: false,
     componentKey: 0,
-    // finishedGames: [],
-    // finishedAGame: false,
   }),
   methods: {
     finishAGame(code, winner) {
@@ -113,29 +77,6 @@ export default {
       }
 
       return res;
-      // if (g[22].includes("finished")) {
-      //   if (g[11] === g[22] && g[22] === g[33]) console.log("left to right");
-      //   else if (g[13] === g[22] && g[22] === g[31])
-      //     console.log("right to left");
-      // }
-
-      // if (
-      //   ((g[11].includes("finishedX") || g[11].includes("finishedO")) &&
-      //     ((g[11] === g[12] && g[12] === g[13]) ||
-      //       (g[11] === g[21] && g[21] === g[31]))) ||
-      //   ((g[22].includes("finishedX") || g[22].includes("finishedO")) &&
-      //     ((g[21] === g[22] && g[22] === g[23]) ||
-      //       (g[12] === g[22] && g[22] === g[32]))) ||
-      //   ((g[33].includes("finishedX") || g[33].includes("finishedO")) &&
-      //     ((g[31] === g[32] && g[32] === g[33]) ||
-      //       (g[13] === g[23] && g[23] === g[33]))) ||
-      //   ((g[22].includes("finishedX") || g[22].includes("finishedO")) &&
-      //     ((g[11] === g[22] && g[22] === g[33]) ||
-      //       (g[13] === g[22] && g[22] === g[31])))
-      // ) {
-      //   console.log("Game is done");
-      //   this.$parent.persistent = true;
-      // }
     },
     start() {
       this.loading = true;
@@ -146,7 +87,6 @@ export default {
   },
   watch: {
     turn() {
-      // console.log(this.gamesStatus);
       if (this.fullGames.includes(this.lastSmallBlock)) {
         for (const key in this.gamesStatus) {
           if (this.gamesStatus[key] === "disabled")
@@ -176,29 +116,6 @@ export default {
         }
       }
     },
-    // turn() {
-    //   console.log(this.turn);
-    //   console.log(this.finishedGames);
-    //   // console.log(this.turn);
-    //   console.log("length is" + this.finishedGames.length);
-    //   // for (const game in this.finishedGames) {
-    //   //   console.log(game);
-    //   // }
-    //   this.finishedGames.forEach((game) => {
-    //     console.log(game);
-    //     this.gamesStatus[game.id] =
-    //       game.winner === 1 ? "finishedX" : "finishedO";
-    //   });
-    //   // console.log(this.gamesStatus);
-    // },
-    // finishedAGame() {
-    //   console.log(this.finishedGames);
-    //   this.finishedGames.forEach((game) => {
-    //     console.log(game);
-    //     this.gamesStatus[game.id] =
-    //       game.winner === 1 ? "finishedX" : "finishedO";
-    //   });
-    // },
   },
 };
 </script>
@@ -238,7 +155,6 @@ table {
   background-position: center;
   background-color: white;
   transition-duration: 1s;
-  /* background-color: red; */
 }
 
 .finishedO {
