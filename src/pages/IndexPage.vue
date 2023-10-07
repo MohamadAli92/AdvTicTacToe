@@ -10,7 +10,10 @@
       ></play-table>
     </div>
 
-    <q-page-sticky position="right" :offset="[30, 18]">
+    <q-page-sticky
+      :position="$q.screen.gt.md ? 'right' : 'top-right'"
+      :offset="[30, 18]"
+    >
       <q-btn
         fab
         icon="restart_alt"
