@@ -97,7 +97,7 @@
             self="center right"
             :offset="[10, 10]"
           >
-            <strong>Zoom In</strong>
+            <strong>Zoom Out</strong>
           </q-tooltip>
         </q-btn>
         <q-btn
