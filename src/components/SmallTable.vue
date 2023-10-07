@@ -93,33 +93,8 @@ export default {
           });
           console.log(res);
           if (res) return res;
-          // for (const way in this.winWays) {
-          //   if (Object.hasOwnProperty.call(this.winWays, way)) {
-          //     const wayArr = this.winWays[way];
-          //     // console.log;
-          //     wayArr.forEach((el) => {});
-          //     console.log(wayArr);
-          //     wayArr.every((item) => console.log(item));
-          //     // if ()
-          //     //   return true;
-          //   }
-          // }
-          // return this.winWays.some((way) =>
-          //   way.every((item) => blocksArray.includes(item))
-          // );
-
-          // return (
-          //   (blocksArray[0][0] === blocksArray[1][0] &&
-          //     blocksArray[1][0] === blocksArray[2][0]) ||
-          //   (blocksArray[0][1] === blocksArray[1][1] &&
-          //     blocksArray[1][1] === blocksArray[2][1]) ||
-          //   this.winWays[0].every((item) => blocksArray.includes(item)) ||
-          //   this.winWays[1].every((item) => blocksArray.includes(item))
-          // );
         }
-        // }
       }
-      // console.log("Cat");
       return false;
     },
     hoverBlock($event) {
@@ -127,15 +102,7 @@ export default {
       $event.srcElement.style.backgroundColor = "red";
     },
   },
-  watch: {
-    // gameIsDone() {
-    //   // console.log(this.$attrs.id);
-    //   this.$parent.finishedGames.push({
-    //     id: this.$attrs.id,
-    //     winner: this.winnerPlayer,
-    //   });
-    // },
-  },
+  watch: {},
 };
 </script>
 
@@ -169,8 +136,6 @@ table {
 }
 
 .circle {
-  /* background-color: green; */
-  /* background-color: white; */
   background-image: url("..\assets\circle.gif");
   background-position: center;
   width: 50px;
