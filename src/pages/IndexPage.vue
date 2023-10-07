@@ -3,7 +3,11 @@
 <template>
   <q-page class="flex flex-center page">
     <div>
-      <play-table class="playTable" :key="componentKey"></play-table>
+      <play-table
+        id="tableId"
+        class="playTable"
+        :key="componentKey"
+      ></play-table>
     </div>
 
     <q-page-sticky position="right" :offset="[30, 18]">
@@ -74,6 +78,41 @@
           </a>
         </q-fab>
       </q-fab>
+    </q-page-sticky>
+
+    <q-page-sticky position="bottom-left" :offset="[30, 30]">
+      <div class="column items-center">
+        <q-btn
+          class="q-mb-sm"
+          fab
+          icon="zoom_out"
+          color="blue"
+          @click="zoom('out')"
+        >
+          <q-tooltip
+            anchor="center left"
+            self="center right"
+            :offset="[10, 10]"
+          >
+            <strong>Zoom In</strong>
+          </q-tooltip>
+        </q-btn>
+        <q-btn
+          class="q-mt-sm"
+          fab
+          icon="zoom_in"
+          color="blue"
+          @click="zoom('in')"
+        >
+          <q-tooltip
+            anchor="center left"
+            self="center right"
+            :offset="[10, 10]"
+          >
+            <strong>Zoom In</strong>
+          </q-tooltip>
+        </q-btn>
+      </div>
     </q-page-sticky>
 
     <q-dialog v-model="colorChanger" position="left">
@@ -150,6 +189,7 @@ export default defineComponent({
     aroundColor: "#bbe5ed",
     innerColor: "#7180ac",
     resetDialog: false,
+    tableScale: 1,
   }),
   methods: {
     reset() {
@@ -161,6 +201,21 @@ export default defineComponent({
     },
     changeColor() {
       this.colorChanger = true;
+    },
+    zoom(type) {
+      if (type === "out") {
+        if (this.tableScale > 0.3) this.tableScale -= 0.2;
+        let scaleStr =
+          "scale(" + this.tableScale + ", " + this.tableScale + ")";
+        document.getElementById("tableId").style.transform = scaleStr;
+        console.log(document.getElementById("tableId").style.transform);
+      } else if (type === "in") {
+        if (this.tableScale < 1.9) this.tableScale += 0.2;
+        let scaleStr =
+          "scale(" + this.tableScale + ", " + this.tableScale + ")";
+        document.getElementById("tableId").style.transform = scaleStr;
+        console.log(document.getElementById("tableId").style.transform);
+      }
     },
   },
 });
