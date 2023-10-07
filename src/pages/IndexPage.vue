@@ -133,8 +133,6 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-
-    <!-- <q-btn label="Click me" color="primary" @mouseenter="clickMe" class="btn" /> -->
   </q-page>
 </template>
 
