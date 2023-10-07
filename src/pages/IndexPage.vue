@@ -14,11 +14,23 @@
         color="orange"
         size="30px"
         @click="showResetDialog"
-      />
+      >
+        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">
+          <strong>Restart game!</strong>
+        </q-tooltip>
+      </q-btn>
     </q-page-sticky>
     <q-page-sticky position="bottom-right" :offset="[30, 30]">
       <q-fab color="purple" icon="settings" direction="up">
-        <q-fab-action color="primary" @click="changeColor" icon="palette" />
+        <q-fab-action color="primary" @click="changeColor" icon="palette">
+          <q-tooltip
+            anchor="center left"
+            self="center right"
+            :offset="[10, 10]"
+          >
+            <strong>Color Picker</strong>
+          </q-tooltip>
+        </q-fab-action>
         <q-fab
           color="amber"
           text-color="black"
@@ -30,8 +42,16 @@
             color="amber"
             text-color="black"
             @click="onClick"
-            icon="person"
-          />
+            icon="info"
+          >
+            <q-tooltip
+              anchor="top middle"
+              self="bottom middle"
+              :offset="[10, 10]"
+            >
+              <strong>Toturial</strong>
+            </q-tooltip>
+          </q-fab-action>
           <a
             href="https://github.com/aiwnsjjw/AdvTicTacToe"
             target="_blank"
@@ -42,7 +62,15 @@
               text-color="black"
               @click="openGithub"
               icon="code"
-            />
+            >
+              <q-tooltip
+                anchor="top middle"
+                self="bottom middle"
+                :offset="[10, 10]"
+              >
+                <strong>Source Code</strong>
+              </q-tooltip>
+            </q-fab-action>
           </a>
         </q-fab>
       </q-fab>
