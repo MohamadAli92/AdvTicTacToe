@@ -7,7 +7,9 @@
         <th v-for="indy in 3">
           <div
             class="block"
-            :style="{ backgroundColor: this.$parent.$parent.aroundColor }"
+            :style="{
+              backgroundColor: this.$parent.$parent.$parent.aroundColor,
+            }"
           >
             <small-table
               :id="String(indx) + String(indy)"
@@ -47,7 +49,7 @@ export default {
   methods: {
     finishAGame(code, winner) {
       this.gamesStatus[code] = winner === 0 ? "finishedO" : "finishedX";
-      this.$parent.$parent.persistent = this.checkForOverallWinner();
+      this.$parent.$parent.$parent.persistent = this.checkForOverallWinner();
     },
     checkForOverallWinner() {
       let g = { ...this.gamesStatus };

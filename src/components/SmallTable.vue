@@ -8,7 +8,7 @@
             :class="blocks[String(indx) + String(indy)].class"
             @click="check(String(indx) + String(indy))"
             :style="{
-              backgroundColor: this.$parent.$parent.$parent.innerColor,
+              backgroundColor: this.$parent.$parent.$parent.$parent.innerColor,
             }"
             @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
             @mouseleave="
