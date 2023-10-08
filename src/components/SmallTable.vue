@@ -13,7 +13,7 @@
             @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
             @mouseleave="
               $event.srcElement.style.backgroundColor =
-                this.$parent.$parent.$parent.innerColor
+                this.$parent.$parent.$parent.$parent.innerColor
             "
           >
             <img

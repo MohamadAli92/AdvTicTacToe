@@ -2,13 +2,15 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
   <q-page class="flex flex-center page">
-    <div>
-      <play-table
-        id="tableId"
-        class="playTable"
-        :key="componentKey"
-      ></play-table>
-    </div>
+    <q-page-sticky position="top">
+      <div>
+        <play-table
+          id="tableId"
+          class="playTable"
+          :key="componentKey"
+        ></play-table>
+      </div>
+    </q-page-sticky>
 
     <q-page-sticky
       :position="$q.screen.gt.md ? 'right' : 'top-right'"
@@ -207,13 +209,13 @@ export default defineComponent({
     },
     zoom(type) {
       if (type === "out") {
-        if (this.tableScale > 0.3) this.tableScale -= 0.2;
+        if (this.tableScale > 0.15) this.tableScale -= 0.1;
         let scaleStr =
           "scale(" + this.tableScale + ", " + this.tableScale + ")";
         document.getElementById("tableId").style.transform = scaleStr;
         console.log(document.getElementById("tableId").style.transform);
       } else if (type === "in") {
-        if (this.tableScale < 1.9) this.tableScale += 0.2;
+        if (this.tableScale < 1.95) this.tableScale += 0.1;
         let scaleStr =
           "scale(" + this.tableScale + ", " + this.tableScale + ")";
         document.getElementById("tableId").style.transform = scaleStr;
