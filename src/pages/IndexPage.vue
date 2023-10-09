@@ -264,4 +264,8 @@ export default defineComponent({
   border: none;
   box-shadow: none;
 }
+
+a {
+  text-decoration: none !important;
+}
 </style>
