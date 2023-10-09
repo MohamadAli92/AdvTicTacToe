@@ -92,7 +92,7 @@
           fab
           icon="zoom_out"
           color="blue"
-          @click="zoom('out')"
+          @click="zoom('out', $q.screen.width)"
         >
           <q-tooltip
             anchor="center left"
@@ -107,7 +107,7 @@
           fab
           icon="zoom_in"
           color="blue"
-          @click="zoom('in')"
+          @click="zoom('in', $q.screen.width)"
         >
           <q-tooltip
             anchor="center left"
@@ -183,6 +183,8 @@
 <script>
 import PlayTable from "src/components/PlayTable.vue";
 import { defineComponent } from "vue";
+// import { useQuasar } from "quasar";
+// const $q = useQuasar();
 
 export default defineComponent({
   components: { PlayTable },
@@ -194,7 +196,9 @@ export default defineComponent({
     aroundColor: "#bbe5ed",
     innerColor: "#7180ac",
     resetDialog: false,
+    // screenWidth: $q.screen.width,
     tableScale: 1,
+    firstTime: true,
   }),
   methods: {
     reset() {
@@ -207,7 +211,14 @@ export default defineComponent({
     changeColor() {
       this.colorChanger = true;
     },
-    zoom(type) {
+    zoom(type, width) {
+      if (this.firstTime) {
+        console.log("mox");
+        this.tableScale =
+          width <= 375 ? 0.5 : width <= 426 ? 0.6 : width <= 768 ? 0.8 : 1;
+        this.firstTime = false;
+      }
+      console.log(width);
       if (type === "out") {
         if (this.tableScale > 0.15) this.tableScale -= 0.1;
         let scaleStr =
@@ -267,5 +278,23 @@ export default defineComponent({
 
 a {
   text-decoration: none !important;
+}
+
+@media only screen and (max-width: 375px) {
+  .playTable {
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@media screen and (max-width: 426px) and (min-width: 375px) {
+  .playTable {
+    transform: scale(0.6, 0.6);
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 426px) {
+  .playTable {
+    transform: scale(0.8, 0.8);
+  }
 }
 </style>
