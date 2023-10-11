@@ -1,13 +1,39 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lhh lpR fff">
+    <q-header reveal elevated class="bg-black text-white">
+      <q-toolbar class="glossy">
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="/logo.png" />
+          </q-avatar>
+          Advanced Tic-Tac-Toe
+        </q-toolbar-title>
+        <q-btn
+          flat
+          round
+          dense
+          :icon="page === 'game' ? 'help' : 'close'"
+          @click="changePage"
+          :to="page === 'game' ? '/tutorial' : '/'"
+        />
+      </q-toolbar>
+    </q-header>
+
     <q-page-container>
-      <router-view />
+      <transition mode="out-in" name="fade">
+        <!-- <router-view :key="$route.fullPath" /> -->
+
+        <router-view v-slot="{ Component }">
+          <component :is="Component" />
+        </router-view>
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { defineComponent, ref } from "vue";
+import "animate.css";
 
 const linksList = [
   {
@@ -68,5 +94,27 @@ export default defineComponent({
       },
     };
   },
+
+  data: () => ({
+    page: "game",
+  }),
+  methods: {
+    changePage() {
+      console.log(this.page);
+      this.page = this.page === "game" ? "tutorial" : "game";
+    },
+  },
 });
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
