@@ -21,8 +21,6 @@
 
     <q-page-container>
       <transition mode="out-in" name="fade">
-        <!-- <router-view :key="$route.fullPath" /> -->
-
         <router-view v-slot="{ Component }">
           <component :is="Component" />
         </router-view>
