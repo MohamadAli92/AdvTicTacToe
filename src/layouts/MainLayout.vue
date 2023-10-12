@@ -22,7 +22,7 @@
     <q-page-container>
       <transition mode="out-in" name="fade">
         <router-view v-slot="{ Component }">
-          <component :is="Component" />
+          <component @go-to-game="changePage" :is="Component" />
         </router-view>
       </transition>
     </q-page-container>
@@ -98,9 +98,12 @@ export default defineComponent({
   }),
   methods: {
     changePage() {
-      console.log(this.page);
+      console.log(this.$route);
       this.page = this.page === "game" ? "tutorial" : "game";
     },
+  },
+  mounted() {
+    this.page = this.$route.name;
   },
 });
 </script>

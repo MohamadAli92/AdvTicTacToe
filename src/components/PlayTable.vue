@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <div class="q-pa-md">
+  <div id="tableDiv" class="q-pa-sm">
     <table class="table" :key="componentKey">
       <tr v-for="indx in 3">
         <th v-for="indy in 3">
@@ -12,6 +12,7 @@
             }"
           >
             <small-table
+              :clickNum="clickNums[String(indx) + String(indy)]"
               :id="String(indx) + String(indy)"
               :class="gamesStatus[String(indx) + String(indy)]"
             ></small-table>
@@ -27,6 +28,10 @@ import SmallTable from "src/components/SmallTable.vue";
 
 export default {
   components: { SmallTable },
+  props: {
+    tutorial: Number,
+  },
+  emits: ["done-status"],
   data: () => ({
     loading: false,
     turn: 1,
@@ -45,6 +50,17 @@ export default {
     fullGames: [],
     persistent: false,
     componentKey: 0,
+    clickNums: {
+      11: undefined,
+      12: undefined,
+      21: undefined,
+      22: undefined,
+      13: undefined,
+      23: undefined,
+      31: undefined,
+      32: undefined,
+      33: undefined,
+    },
   }),
   methods: {
     finishAGame(code, winner) {
@@ -116,6 +132,59 @@ export default {
               this.gamesStatus[key] = "finishedO disabled";
           }
         }
+      }
+    },
+    tutorial() {
+      if (this.tutorial === 2) {
+        setTimeout(() => {
+          this.clickNums["13"] = "22";
+        }, 1000);
+        setTimeout(() => {
+          this.$emit("done-status", 2);
+        }, 1700);
+      } else if (this.tutorial === 3) {
+        setTimeout(() => {
+          this.clickNums["22"] = "13";
+        }, 1000);
+        setTimeout(() => {
+          this.$emit("done-status", 3);
+        }, 1700);
+      } else if (this.tutorial === 4) {
+        setTimeout(() => {
+          this.clickNums["13"] = "31";
+        }, 1000);
+        setTimeout(() => {
+          this.clickNums["31"] = "13";
+        }, 1700);
+        setTimeout(() => {
+          this.clickNums["13"] = "13";
+        }, 2400);
+        setTimeout(() => {
+          this.$emit("done-status", 4);
+        }, 3100);
+      } else if (this.tutorial === 5) {
+        let playingBlocks = [
+          ["13", "33"],
+          ["33", "12"],
+          ["12", "33"],
+          ["33", "22"],
+          ["22", "33"],
+          ["33", "32"],
+          ["32", "23"],
+          ["23", "21"],
+          ["21", "23"],
+          ["23", "22"],
+          ["22", "23"],
+          ["23", "23"],
+        ];
+        let i = 0;
+        setInterval(() => {
+          this.clickNums[playingBlocks[i][0]] = playingBlocks[i][1];
+          i += 1;
+        }, 700);
+        setTimeout(() => {
+          this.$emit("done-status", 5);
+        }, 9100);
       }
     },
   },

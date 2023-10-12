@@ -31,6 +31,10 @@
 
 <script>
 export default {
+  props: {
+    clickNum: String,
+  },
+
   data: () => ({
     blocks: {
       11: { source: "block", class: "block", set: false, player: -1 },
@@ -102,7 +106,11 @@ export default {
       $event.srcElement.style.backgroundColor = "red";
     },
   },
-  watch: {},
+  watch: {
+    clickNum() {
+      this.check(this.clickNum);
+    },
+  },
 };
 </script>
 
