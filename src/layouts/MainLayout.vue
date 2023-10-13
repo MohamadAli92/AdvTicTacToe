@@ -20,9 +20,9 @@
     </q-header>
 
     <q-page-container>
-      <transition mode="out-in" name="fade">
+      <transition name="fade">
         <router-view v-slot="{ Component }">
-          <component @go-to-game="changePage" :is="Component" />
+          <component :is="Component" />
         </router-view>
       </transition>
     </q-page-container>

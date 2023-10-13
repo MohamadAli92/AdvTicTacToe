@@ -164,7 +164,6 @@ export default defineComponent({
 
   name: "TutorialPage",
 
-  emits: ["go-to-game"],
   data: () => ({
     step: 1,
     disableTable: true,
@@ -203,14 +202,8 @@ export default defineComponent({
 
 <style scoped>
 .page {
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #d7e9d2, #96decd); */
   background-color: #8cc0de;
-  /* background-size: 400% 400%; */
-  /* animation: gradient 60s ease infinite; */
-  /* transition-duration: 500ms; */
-  transition: background 3s;
-
-  /* font-weight: 300; */
   font-size: 20px;
+  transition-duration: 1500ms;
 }
 </style>
