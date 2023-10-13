@@ -12,10 +12,18 @@
           flat
           round
           dense
-          :icon="page === 'game' ? 'help' : 'close'"
+          :icon="page === 'game' ? 'help' : 'sports_esports'"
           @click="changePage"
           :to="page === 'game' ? '/tutorial' : '/'"
-        />
+        >
+          <q-tooltip
+            anchor="center left"
+            self="center right"
+            :offset="[10, 10]"
+          >
+            <strong>{{ page === "game" ? "tutorial" : "game" }}</strong>
+          </q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
