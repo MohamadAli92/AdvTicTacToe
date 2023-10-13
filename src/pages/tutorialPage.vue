@@ -3,7 +3,7 @@
     id="pageId"
     class="fit row wrap justify-center items-center content-center page"
   >
-    <div class="q-pa-md steps col-6">
+    <div :class="$q.screen.gt.md ? 'q-pa-md steps col-6' : 'q-pa-md steps col'">
       <q-stepper
         v-model="step"
         vertical
@@ -45,7 +45,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="buttonDisable[0]"
+              :loading="$q.screen.gt.md && buttonDisable[0]"
               @click="goToStep(3)"
               color="primary"
               label="Continue"
@@ -68,7 +68,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="buttonDisable[1]"
+              :loading="$q.screen.gt.md && buttonDisable[1]"
               @click="goToStep(4)"
               color="primary"
               label="Continue"
@@ -93,7 +93,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="buttonDisable[2]"
+              :loading="$q.screen.gt.md && buttonDisable[2]"
               @click="goToStep(5)"
               color="primary"
               label="Continue"
@@ -121,7 +121,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="buttonDisable[3]"
+              :loading="$q.screen.gt.md && buttonDisable[3]"
               @click="restartTutorial"
               color="red"
               label="Restart tutorial"
@@ -137,7 +137,10 @@
       </q-stepper>
     </div>
 
-    <div class="fit row wrap justify-start items-center content-center col">
+    <div
+      v-if="$q.screen.gt.md"
+      class="fit row wrap justify-start items-center content-center col"
+    >
       <play-table
         style="pointer-events: none"
         :tutorial="step"
