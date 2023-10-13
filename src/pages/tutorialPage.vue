@@ -1,7 +1,19 @@
 <template>
-  <q-page class="fit row wrap justify-center items-center content-center">
+  <q-page
+    id="pageId"
+    class="fit row wrap justify-center items-center content-center page"
+  >
     <div class="q-pa-md steps col-6">
-      <q-stepper v-model="step" vertical color="primary" animated>
+      <q-stepper
+        v-model="step"
+        vertical
+        color="primary"
+        animated
+        class="transparent"
+        flat
+        inactive-color="black"
+        active-color="black"
+      >
         <q-step
           :name="1"
           title="You have to know tic-tac-toe"
@@ -18,7 +30,12 @@
           </q-stepper-navigation>
         </q-step>
 
-        <q-step :name="2" title="Priorty matters" icon="info" :done="step > 2">
+        <q-step
+          :name="2"
+          title="Priorty matters"
+          icon="priority_high"
+          :done="step > 2"
+        >
           Game always starts with cross; Next player should plays his turn after
           that.
           <br /><strong>
@@ -28,7 +45,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :disable="buttonDisable[0]"
+              :loading="buttonDisable[0]"
               @click="goToStep(3)"
               color="primary"
               label="Continue"
@@ -39,7 +56,7 @@
         <q-step
           :name="3"
           title="You should have strategy"
-          icon="local_fire_department"
+          icon="extension"
           :done="step > 2"
         >
           Next player should play in corresponding game of 9 games by block
@@ -51,7 +68,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :disable="buttonDisable[1]"
+              :loading="buttonDisable[1]"
               @click="goToStep(4)"
               color="primary"
               label="Continue"
@@ -76,7 +93,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :disable="buttonDisable[2]"
+              :loading="buttonDisable[2]"
               @click="goToStep(5)"
               color="primary"
               label="Continue"
@@ -94,7 +111,7 @@
         <q-step
           :name="5"
           title="You have to win 3 games in a line"
-          icon="local_fire_department"
+          icon="emoji_events"
           :done="step > 5"
         >
           Now you should try and have strategy to win three games in a line,
@@ -104,7 +121,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :disable="buttonDisable[3]"
+              :loading="buttonDisable[3]"
               @click="restartTutorial"
               color="red"
               label="Restart tutorial"
@@ -159,12 +176,16 @@ export default defineComponent({
       if (stepNum === 2) {
         this.disableTable = false;
         this.step = 2;
+        document.getElementById("pageId").style.backgroundColor = "#B2A4FF";
       } else if (stepNum === 3) {
         this.step = 3;
+        document.getElementById("pageId").style.backgroundColor = "#FFB4B4";
       } else if (stepNum === 4) {
         this.step = 4;
+        document.getElementById("pageId").style.backgroundColor = "#FDF7C3";
       } else if (stepNum === 5) {
         this.step = 5;
+        document.getElementById("pageId").style.backgroundColor = "#CBFFA9";
       }
     },
     restartTutorial() {
@@ -172,6 +193,7 @@ export default defineComponent({
       this.disableTable = true;
       this.step = 1;
       this.buttonDisable = [true, true, true, true];
+      document.getElementById("pageId").style.backgroundColor = "#8CC0DE";
     },
   },
 
@@ -180,6 +202,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.steps {
+.page {
+  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #d7e9d2, #96decd); */
+  background-color: #8cc0de;
+  /* background-size: 400% 400%; */
+  /* animation: gradient 60s ease infinite; */
+  /* transition-duration: 500ms; */
+  transition: background 3s;
+
+  /* font-weight: 300; */
+  font-size: 20px;
 }
 </style>
