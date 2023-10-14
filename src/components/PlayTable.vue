@@ -1,36 +1,6 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <!-- <div
-    class="column no-wrap flex-center q-pa-none"
-    style="background-color: black"
-  >
-    <div v-for="indx in 3" class="row no-wrap flex-center col">
-      <div
-        v-for="indy in 3"
-        class="col"
-        :class="blocks[String(indx) + String(indy)].class"
-        @click="check(String(indx) + String(indy))"
-        :style="{
-          backgroundColor: this.$parent.$parent.$parent.$parent.innerColor,
-        }"
-        @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
-        @mouseleave="
-          $event.srcElement.style.backgroundColor =
-            this.$parent.$parent.$parent.$parent.innerColor
-        "
-      >
-        <img
-          v-if="blocks[String(indx) + String(indy)].set"
-          :src="blocks[String(indx) + String(indy)].source"
-          :class="blocks[String(indx) + String(indy)].class"
-          alt="circleGif"
-        />
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div  class="q-pa-sm"> -->
   <div
     id="tableDiv"
     class="column no-wrap flex-center table"
