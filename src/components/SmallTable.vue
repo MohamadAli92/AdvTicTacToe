@@ -28,34 +28,6 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="q-pa-md">
-    <table class="table">
-      <tr v-for="indx in 3">
-        <th v-for="indy in 3">
-          <div
-            :class="blocks[String(indx) + String(indy)].class"
-            @click="check(String(indx) + String(indy))"
-            :style="{
-              backgroundColor: this.$parent.$parent.$parent.$parent.innerColor,
-            }"
-            @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
-            @mouseleave="
-              $event.srcElement.style.backgroundColor =
-                this.$parent.$parent.$parent.$parent.innerColor
-            "
-          >
-            <img
-              v-if="blocks[String(indx) + String(indy)].set"
-              :src="blocks[String(indx) + String(indy)].source"
-              :class="blocks[String(indx) + String(indy)].class"
-              alt="circleGif"
-            />
-          </div>
-        </th>
-      </tr>
-    </table>
-  </div> -->
 </template>
 
 <script>
