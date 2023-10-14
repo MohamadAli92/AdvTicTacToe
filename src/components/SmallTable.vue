@@ -144,17 +144,11 @@ export default {
 </script>
 
 <style scoped>
-table {
-  background-color: black;
-  height: 100%;
-  width: 100%;
-}
-
 .block {
   background-color: #7180ac;
   width: 50px;
   height: 50px;
-  /* margin: 0.125rem; */
+  margin: 0.15rem;
   transition-duration: 0.15s;
 }
 
@@ -178,8 +172,5 @@ table {
   width: 50px;
   height: 50px;
   margin: 1px;
-}
-.main {
-  padding: 0px;
 }
 </style>

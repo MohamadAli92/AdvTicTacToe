@@ -1,25 +1,56 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <div id="tableDiv" class="q-pa-sm">
-    <table class="table" :key="componentKey">
-      <tr v-for="indx in 3">
-        <th v-for="indy in 3">
-          <div
-            class="block"
-            :style="{
-              backgroundColor: this.$parent.$parent.$parent.aroundColor,
-            }"
-          >
-            <small-table
-              :clickNum="clickNums[String(indx) + String(indy)]"
-              :id="String(indx) + String(indy)"
-              :class="gamesStatus[String(indx) + String(indy)]"
-            ></small-table>
-          </div>
-        </th>
-      </tr>
-    </table>
+  <!-- <div
+    class="column no-wrap flex-center q-pa-none"
+    style="background-color: black"
+  >
+    <div v-for="indx in 3" class="row no-wrap flex-center col">
+      <div
+        v-for="indy in 3"
+        class="col"
+        :class="blocks[String(indx) + String(indy)].class"
+        @click="check(String(indx) + String(indy))"
+        :style="{
+          backgroundColor: this.$parent.$parent.$parent.$parent.innerColor,
+        }"
+        @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
+        @mouseleave="
+          $event.srcElement.style.backgroundColor =
+            this.$parent.$parent.$parent.$parent.innerColor
+        "
+      >
+        <img
+          v-if="blocks[String(indx) + String(indy)].set"
+          :src="blocks[String(indx) + String(indy)].source"
+          :class="blocks[String(indx) + String(indy)].class"
+          alt="circleGif"
+        />
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div  class="q-pa-sm"> -->
+  <div
+    id="tableDiv"
+    class="column no-wrap flex-center table"
+    :key="componentKey"
+  >
+    <div v-for="indx in 3" class="row no-wrap flex-center col">
+      <div
+        v-for="indy in 3"
+        class="col block"
+        :style="{
+          backgroundColor: this.$parent.$parent.$parent.aroundColor,
+        }"
+      >
+        <small-table
+          :clickNum="clickNums[String(indx) + String(indy)]"
+          :id="String(indx) + String(indy)"
+          :class="gamesStatus[String(indx) + String(indy)]"
+        ></small-table>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -195,24 +226,10 @@ export default {
 * {
   transition-duration: 0.5s;
 }
-.loading-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  text-align: center;
-  padding-top: 200px;
-  font-size: 30px;
-  font-family: sans-serif;
-  z-index: 1000000;
-  color: white;
-}
-
-table {
+.table {
   background-color: black;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
+  padding: 0.3125rem;
 }
 
 .disabled {
@@ -238,9 +255,8 @@ table {
 
 .block {
   background-color: #bbe5ed;
-  height: 200px;
-  width: 200px;
-  margin: 5px;
+  padding: 0.9375rem;
+  margin: 0.5rem;
   border-radius: 10px;
 }
 </style>
