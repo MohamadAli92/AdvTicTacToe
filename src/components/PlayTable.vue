@@ -219,7 +219,7 @@ export default {
   background-image: url("../bigCircle.gif");
   background-position: center;
   background-color: white;
-  background-size: 390px;
+  background-size: 300px;
   transition-duration: 1s;
 }
 
