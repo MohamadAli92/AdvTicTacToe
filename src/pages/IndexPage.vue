@@ -210,8 +210,8 @@ export default defineComponent({
     zoom(type, width) {
       if (this.firstTime) {
         console.log("mox");
-        this.tableScale =
-          width <= 375 ? 0.5 : width <= 426 ? 0.6 : width <= 768 ? 0.8 : 1;
+        this.tableScale = width <= 767 ? 0.7 : 1;
+        // width <= 375 ? 0.5 : width <= 426 ? 0.6 : width <= 768 ? 0.8 : 1;
         this.firstTime = false;
       }
       console.log(width);
@@ -276,21 +276,21 @@ a {
   text-decoration: none !important;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 767px) {
   .playTable {
-    transform: scale(0.5, 0.5);
+    transform: scale(0.7, 0.7);
   }
 }
 
-@media screen and (max-width: 426px) and (min-width: 375px) {
+/* @media screen and (max-width: 426px) and (min-width: 375px) {
   .playTable {
     transform: scale(0.6, 0.6);
   }
-}
+} */
 
-@media screen and (max-width: 768px) and (min-width: 426px) {
+/* @media screen and (max-width: 768px) and (min-width: 426px) {
   .playTable {
     transform: scale(0.8, 0.8);
   }
-}
+} */
 </style>

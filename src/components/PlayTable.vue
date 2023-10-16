@@ -229,4 +229,10 @@ export default {
   margin: 0.5em;
   border-radius: 10px;
 }
+
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+  .block {
+    padding: 0.5em;
+  }
+}
 </style>

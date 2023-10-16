@@ -128,12 +128,12 @@ export default {
   margin: 0 0.15em 0 0.15em;
 }
 
-.cross {
+/* .cross {
   background-color: red;
   width: 50px;
   height: 50px;
-  /* margin: 0.15rem; */
-}
+  margin: 0.15rem;
+} */
 
 /* .circle {
   background-image: url("..\assets\circle.gif");
@@ -142,4 +142,32 @@ export default {
   height: 50px;
   margin: 0.15rem;
 } */
+
+@media only screen and (max-width: 376px) and (min-width: 320px) {
+  .block {
+    width: 35px;
+    height: 35px;
+  }
+
+  .setBlock {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    margin: 0 0.15em 0 0.15em;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 377px) {
+  .block {
+    width: 40px;
+    height: 40px;
+  }
+
+  .setBlock {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    margin: 0 0.15em 0 0.15em;
+  }
+}
 </style>
