@@ -82,9 +82,13 @@
     </q-page-sticky>
 
     <q-page-sticky position="bottom-left" :offset="[30, 30]">
-      <div class="column items-center">
+      <div
+        :class="
+          $q.screen.height >= 700 ? 'column items-center' : 'row items-center'
+        "
+      >
         <q-btn
-          class="q-mb-sm"
+          :class="$q.screen.height >= 700 ? 'q-mb-sm' : 'q-mr-sm'"
           fab
           icon="zoom_out"
           color="blue"
@@ -99,7 +103,7 @@
           </q-tooltip>
         </q-btn>
         <q-btn
-          class="q-mt-sm"
+          :class="$q.screen.height >= 700 ? 'q-mt-sm' : 'q-ml-sm'"
           fab
           icon="zoom_in"
           color="blue"
