@@ -11,7 +11,7 @@
         v-for="indy in 3"
         class="col block"
         :style="{
-          backgroundColor: this.$parent.$parent.$parent.aroundColor,
+          backgroundColor: this.$parent.$parent.aroundColor,
         }"
       >
         <small-table
@@ -66,7 +66,7 @@ export default {
   methods: {
     finishAGame(code, winner) {
       this.gamesStatus[code] = winner === 0 ? "finishedO" : "finishedX";
-      this.$parent.$parent.$parent.persistent = this.checkForOverallWinner();
+      this.$parent.$parent.persistent = this.checkForOverallWinner();
     },
     checkForOverallWinner() {
       let g = { ...this.gamesStatus };
@@ -198,8 +198,8 @@ export default {
 }
 .table {
   background-color: black;
-  border-radius: 0.9375rem;
-  padding: 0.3125rem;
+  border-radius: 0.9375em;
+  padding: 0.1em;
 }
 
 .disabled {
@@ -225,8 +225,8 @@ export default {
 
 .block {
   background-color: #bbe5ed;
-  padding: 0.9375rem;
-  margin: 0.5rem;
+  padding: 0.9375em;
+  margin: 0.5em;
   border-radius: 10px;
 }
 </style>

@@ -1,22 +1,19 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <div
-    class="column no-wrap flex-center q-pa-none"
-    style="background-color: black"
-  >
+  <div class="column no-wrap flex-center q-pa-none">
     <div v-for="indx in 3" class="row no-wrap flex-center col">
       <div
         v-for="indy in 3"
-        class="col"
+        class="col flex flex-center"
         :class="blocks[String(indx) + String(indy)].class"
         @click="check(String(indx) + String(indy))"
         :style="{
-          backgroundColor: this.$parent.$parent.$parent.$parent.innerColor,
+          backgroundColor: this.$parent.$parent.$parent.innerColor,
         }"
         @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
         @mouseleave="
           $event.srcElement.style.backgroundColor =
-            this.$parent.$parent.$parent.$parent.innerColor
+            this.$parent.$parent.$parent.innerColor
         "
       >
         <img
@@ -120,7 +117,7 @@ export default {
   background-color: #7180ac;
   width: 50px;
   height: 50px;
-  margin: 0.15rem;
+  margin: 0.15em;
   transition-duration: 0.15s;
 }
 
@@ -128,21 +125,21 @@ export default {
   background-color: white;
   width: 50px;
   height: 50px;
-  margin: 1px;
+  margin: 0 0.15em 0 0.15em;
 }
 
 .cross {
   background-color: red;
   width: 50px;
   height: 50px;
-  margin: 1px;
+  /* margin: 0.15rem; */
 }
 
-.circle {
+/* .circle {
   background-image: url("..\assets\circle.gif");
   background-position: center;
   width: 50px;
   height: 50px;
-  margin: 1px;
-}
+  margin: 0.15rem;
+} */
 </style>

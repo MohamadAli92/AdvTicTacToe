@@ -1,16 +1,12 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <q-page class="flex flex-center page">
-    <q-page-sticky position="top">
-      <div>
-        <play-table
-          id="tableId"
-          class="playTable"
-          :key="componentKey"
-        ></play-table>
-      </div>
-    </q-page-sticky>
+  <q-page class="flex page justify-center flex-center">
+    <!-- <q-page-sticky position="top"> -->
+    <!-- <div style="height: 100vh" class="flex flex-center"> -->
+    <play-table id="tableId" class="playTable" :key="componentKey"></play-table>
+    <!-- </div> -->
+    <!-- </q-page-sticky> -->
 
     <q-page-sticky
       :position="$q.screen.gt.md ? 'right' : 'top-right'"
