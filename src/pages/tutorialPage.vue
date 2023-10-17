@@ -209,4 +209,16 @@ export default defineComponent({
   font-size: 20px;
   transition-duration: 1500ms;
 }
+
+@media only screen and (max-width: 376px) and (min-width: 320px) {
+  .page {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 377px) {
+  .page {
+    font-size: 18px;
+  }
+}
 </style>

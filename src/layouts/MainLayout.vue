@@ -2,7 +2,7 @@
   <q-layout view="lhh lpR fff">
     <q-header reveal elevated class="bg-black text-white">
       <q-toolbar>
-        <q-toolbar-title>
+        <q-toolbar-title style="font-size: 18px">
           <q-avatar>
             <img src="/logo.png" />
           </q-avatar>
