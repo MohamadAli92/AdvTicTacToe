@@ -142,7 +142,7 @@
       class="fit row wrap justify-start items-center content-center col"
     >
       <play-table
-        style="pointer-events: none"
+        style="pointer-events: none; font-size: 16px"
         :tutorial="step"
         id="tableId"
         :class="disableTable ? 'disabled' : ''"
