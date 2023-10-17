@@ -1,9 +1,35 @@
 <template>
   <q-page
     id="pageId"
-    class="fit row wrap justify-center items-center content-center page"
+    :class="$q.screen.gt.md ? 'row' : 'column'"
+    class="fit wrap justify-center items-center content-center page"
   >
-    <div :class="$q.screen.gt.md ? 'q-pa-md steps col-6' : 'q-pa-md steps col'">
+    <!-- <div v-if="$q.screen.lt.md" name="first" class="flex-center"> -->
+    <play-table
+      v-if="$q.screen.lt.md"
+      style="pointer-events: none; scale: 0.7; font-size: 8px"
+      class="transparent"
+      :tutorial="step"
+      id="tableId"
+      :class="disableTable ? 'disabled' : ''"
+      :key="componentKey"
+      @done-status="
+        (status) => {
+          console.log(status);
+          buttonDisable[status - 2] = false;
+          scrollToElement('bottom');
+          // let target = getScrollTarget(el);
+          // let offset = el.offsetTop;
+          // setVerticalScrollPosition(target, offset, 1000)
+        }
+      "
+    ></play-table>
+    <!-- </div> -->
+
+    <div
+      id="stepper"
+      :class="$q.screen.gt.md ? 'q-pa-md steps col-6' : 'q-pa-md steps col'"
+    >
       <q-stepper
         v-model="step"
         vertical
@@ -45,7 +71,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="$q.screen.gt.md && buttonDisable[0]"
+              :loading="buttonDisable[0]"
               @click="goToStep(3)"
               color="primary"
               label="Continue"
@@ -68,7 +94,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="$q.screen.gt.md && buttonDisable[1]"
+              :loading="buttonDisable[1]"
               @click="goToStep(4)"
               color="primary"
               label="Continue"
@@ -93,7 +119,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="$q.screen.gt.md && buttonDisable[2]"
+              :loading="buttonDisable[2]"
               @click="goToStep(5)"
               color="primary"
               label="Continue"
@@ -121,7 +147,7 @@
 
           <q-stepper-navigation>
             <q-btn
-              :loading="$q.screen.gt.md && buttonDisable[3]"
+              :loading="buttonDisable[3]"
               @click="restartTutorial"
               color="red"
               label="Restart tutorial"
@@ -159,8 +185,13 @@
 </template>
 
 <script>
+import { scroll } from "quasar";
+const { getScrollTarget, setVerticalScrollPosition } = scroll;
+
 import { defineComponent, ref } from "vue";
 import PlayTable from "src/components/PlayTable.vue";
+
+// takes an element object
 
 export default defineComponent({
   components: { PlayTable },
@@ -172,9 +203,12 @@ export default defineComponent({
     disableTable: true,
     buttonDisable: [true, true, true, true],
     componentKey: 0,
+    slide: "first",
   }),
   methods: {
     goToStep(stepNum) {
+      this.scrollToElement("top");
+
       if (stepNum === 2) {
         this.disableTable = false;
         this.step = 2;
@@ -196,6 +230,19 @@ export default defineComponent({
       this.step = 1;
       this.buttonDisable = [true, true, true, true];
       document.getElementById("pageId").style.backgroundColor = "#8CC0DE";
+    },
+    scrollToElement(mode) {
+      if (mode === "bottom") {
+        let el = document.getElementById("stepper");
+        let target = getScrollTarget(el);
+        let offset = el.offsetTop;
+        setVerticalScrollPosition(target, offset, 1000);
+      } else {
+        let el = document.getElementById("tableId");
+        let target = getScrollTarget(el);
+        let offset = el.offsetTop;
+        setVerticalScrollPosition(target, offset, 1000);
+      }
     },
   },
 
@@ -221,4 +268,12 @@ export default defineComponent({
     font-size: 18px;
   }
 }
+</style>
+
+<style lang="sass" scoped>
+.custom-caption
+  text-align: center
+  padding: 12px
+  color: white
+  background-color: rgba(0, 0, 0, .3)
 </style>
