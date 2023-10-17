@@ -1,31 +1,29 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <div class="q-pa-md">
-    <table class="table">
-      <tr v-for="indx in 3">
-        <th v-for="indy in 3">
-          <div
-            :class="blocks[String(indx) + String(indy)].class"
-            @click="check(String(indx) + String(indy))"
-            :style="{
-              backgroundColor: this.$parent.$parent.$parent.$parent.innerColor,
-            }"
-            @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
-            @mouseleave="
-              $event.srcElement.style.backgroundColor =
-                this.$parent.$parent.$parent.$parent.innerColor
-            "
-          >
-            <img
-              v-if="blocks[String(indx) + String(indy)].set"
-              :src="blocks[String(indx) + String(indy)].source"
-              :class="blocks[String(indx) + String(indy)].class"
-              alt="circleGif"
-            />
-          </div>
-        </th>
-      </tr>
-    </table>
+  <div class="column no-wrap flex-center q-pa-none">
+    <div v-for="indx in 3" class="row no-wrap flex-center col">
+      <div
+        v-for="indy in 3"
+        class="col flex flex-center"
+        :class="blocks[String(indx) + String(indy)].class"
+        @click="check(String(indx) + String(indy))"
+        :style="{
+          backgroundColor: this.$parent.$parent.$parent.innerColor,
+        }"
+        @mouseenter="$event.srcElement.style.backgroundColor = '#2b4570'"
+        @mouseleave="
+          $event.srcElement.style.backgroundColor =
+            this.$parent.$parent.$parent.innerColor
+        "
+      >
+        <img
+          v-if="blocks[String(indx) + String(indy)].set"
+          :src="blocks[String(indx) + String(indy)].source"
+          :class="blocks[String(indx) + String(indy)].class"
+          alt="circleGif"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -115,17 +113,11 @@ export default {
 </script>
 
 <style scoped>
-table {
-  background-color: black;
-  height: 100%;
-  width: 100%;
-}
-
 .block {
   background-color: #7180ac;
   width: 50px;
   height: 50px;
-  margin: 1px;
+  margin: 0.15em;
   transition-duration: 0.15s;
 }
 
@@ -133,24 +125,49 @@ table {
   background-color: white;
   width: 50px;
   height: 50px;
-  margin: 1px;
+  margin: 0 0.15em 0 0.15em;
 }
 
-.cross {
+/* .cross {
   background-color: red;
   width: 50px;
   height: 50px;
-  margin: 1px;
-}
+  margin: 0.15rem;
+} */
 
-.circle {
+/* .circle {
   background-image: url("..\assets\circle.gif");
   background-position: center;
   width: 50px;
   height: 50px;
-  margin: 1px;
+  margin: 0.15rem;
+} */
+
+@media only screen and (max-width: 376px) and (min-width: 320px) {
+  .block {
+    width: 35px;
+    height: 35px;
+  }
+
+  .setBlock {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    margin: 0 0.15em 0 0.15em;
+  }
 }
-.main {
-  padding: 0px;
+
+@media only screen and (max-width: 767px) and (min-width: 377px) {
+  .block {
+    width: 40px;
+    height: 40px;
+  }
+
+  .setBlock {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    margin: 0 0.15em 0 0.15em;
+  }
 }
 </style>

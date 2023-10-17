@@ -1,16 +1,12 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <q-page class="flex flex-center page">
-    <q-page-sticky position="top">
-      <div>
-        <play-table
-          id="tableId"
-          class="playTable"
-          :key="componentKey"
-        ></play-table>
-      </div>
-    </q-page-sticky>
+  <q-page class="flex page justify-center flex-center">
+    <!-- <q-page-sticky position="top"> -->
+    <!-- <div style="height: 100vh" class="flex flex-center"> -->
+    <play-table id="tableId" class="playTable" :key="componentKey"></play-table>
+    <!-- </div> -->
+    <!-- </q-page-sticky> -->
 
     <q-page-sticky
       :position="$q.screen.gt.md ? 'right' : 'top-right'"
@@ -86,9 +82,13 @@
     </q-page-sticky>
 
     <q-page-sticky position="bottom-left" :offset="[30, 30]">
-      <div class="column items-center">
+      <div
+        :class="
+          $q.screen.height >= 700 ? 'column items-center' : 'row items-center'
+        "
+      >
         <q-btn
-          class="q-mb-sm"
+          :class="$q.screen.height >= 700 ? 'q-mb-sm' : 'q-mr-sm'"
           fab
           icon="zoom_out"
           color="blue"
@@ -103,7 +103,7 @@
           </q-tooltip>
         </q-btn>
         <q-btn
-          class="q-mt-sm"
+          :class="$q.screen.height >= 700 ? 'q-mt-sm' : 'q-ml-sm'"
           fab
           icon="zoom_in"
           color="blue"
@@ -214,8 +214,8 @@ export default defineComponent({
     zoom(type, width) {
       if (this.firstTime) {
         console.log("mox");
-        this.tableScale =
-          width <= 375 ? 0.5 : width <= 426 ? 0.6 : width <= 768 ? 0.8 : 1;
+        this.tableScale = width <= 767 ? 0.7 : 1;
+        // width <= 375 ? 0.5 : width <= 426 ? 0.6 : width <= 768 ? 0.8 : 1;
         this.firstTime = false;
       }
       console.log(width);
@@ -280,21 +280,21 @@ a {
   text-decoration: none !important;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 767px) {
   .playTable {
-    transform: scale(0.5, 0.5);
+    transform: scale(0.7, 0.7);
   }
 }
 
-@media screen and (max-width: 426px) and (min-width: 375px) {
+/* @media screen and (max-width: 426px) and (min-width: 375px) {
   .playTable {
     transform: scale(0.6, 0.6);
   }
-}
+} */
 
-@media screen and (max-width: 768px) and (min-width: 426px) {
+/* @media screen and (max-width: 768px) and (min-width: 426px) {
   .playTable {
     transform: scale(0.8, 0.8);
   }
-}
+} */
 </style>

@@ -1,25 +1,26 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <div id="tableDiv" class="q-pa-sm">
-    <table class="table" :key="componentKey">
-      <tr v-for="indx in 3">
-        <th v-for="indy in 3">
-          <div
-            class="block"
-            :style="{
-              backgroundColor: this.$parent.$parent.$parent.aroundColor,
-            }"
-          >
-            <small-table
-              :clickNum="clickNums[String(indx) + String(indy)]"
-              :id="String(indx) + String(indy)"
-              :class="gamesStatus[String(indx) + String(indy)]"
-            ></small-table>
-          </div>
-        </th>
-      </tr>
-    </table>
+  <div
+    id="tableDiv"
+    class="column no-wrap flex-center table"
+    :key="componentKey"
+  >
+    <div v-for="indx in 3" class="row no-wrap flex-center col">
+      <div
+        v-for="indy in 3"
+        class="col block"
+        :style="{
+          backgroundColor: this.$parent.$parent.aroundColor,
+        }"
+      >
+        <small-table
+          :clickNum="clickNums[String(indx) + String(indy)]"
+          :id="String(indx) + String(indy)"
+          :class="gamesStatus[String(indx) + String(indy)]"
+        ></small-table>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -65,7 +66,7 @@ export default {
   methods: {
     finishAGame(code, winner) {
       this.gamesStatus[code] = winner === 0 ? "finishedO" : "finishedX";
-      this.$parent.$parent.$parent.persistent = this.checkForOverallWinner();
+      this.$parent.$parent.persistent = this.checkForOverallWinner();
     },
     checkForOverallWinner() {
       let g = { ...this.gamesStatus };
@@ -195,24 +196,10 @@ export default {
 * {
   transition-duration: 0.5s;
 }
-.loading-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  text-align: center;
-  padding-top: 200px;
-  font-size: 30px;
-  font-family: sans-serif;
-  z-index: 1000000;
-  color: white;
-}
-
-table {
+.table {
   background-color: black;
-  border-radius: 15px;
+  border-radius: 0.9375em;
+  padding: 0.1em;
 }
 
 .disabled {
@@ -232,15 +219,20 @@ table {
   background-image: url("../bigCircle.gif");
   background-position: center;
   background-color: white;
-  background-size: 390px;
+  background-size: 300px;
   transition-duration: 1s;
 }
 
 .block {
   background-color: #bbe5ed;
-  height: 200px;
-  width: 200px;
-  margin: 5px;
+  padding: 0.9375em;
+  margin: 0.5em;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+  .block {
+    padding: 0.5em;
+  }
 }
 </style>
