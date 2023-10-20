@@ -259,7 +259,7 @@ export default defineComponent({
 
 @media only screen and (max-width: 376px) and (min-width: 320px) {
   .page {
-    font-size: 13px;
+    font-size: 16px;
   }
 }
 
