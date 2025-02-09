@@ -19,14 +19,10 @@ You can try this game from <a href="https://adv-xo.vercel.app/" target="_blank">
     1. Desktop:
 
         <table>
-                <tr><td><img src="./Screenshots/2.png" alt="Main Game"></td></tr>
-                <tr><td><img src="./Screenshots/4.png" alt="Tutorial Page"></td></tr>
-                <tr><td><img src="./Screenshots/6.png" alt="Color Picker"></td></tr>
+                <tr><td><img src="./Screenshots/1.png" alt="Main Game"></td></tr>
+                <tr><td><img src="./Screenshots/3.png" alt="Tutorial Page"></td></tr>
+                <tr><td><img src="./Screenshots/5.png" alt="Color Picker"></td></tr>
         </table>
-
-        ![](./Screenshots/1.png)
-        ![](./Screenshots/3.png)
-        ![](./Screenshots/5.png)
 
     2. Mobile:
 
