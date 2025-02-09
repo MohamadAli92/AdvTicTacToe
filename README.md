@@ -26,7 +26,7 @@ You can try this game from <a href="https://adv-xo.vercel.app/" target="_blank">
 
         <table>
             <tr>
-                <td><img style="border-radius: 25px;" src="./Screenshots/2.png" alt="Main Game"></td>
+                <td><img style="border: 2px solid red;" src="./Screenshots/2.png" alt="Main Game"></td>
                 <td><img src="./Screenshots/4.png" alt="Tutorial Page"></td>
                 <td><img src="./Screenshots/6.png" alt="Color Picker"></td>
             </tr>
