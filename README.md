@@ -12,6 +12,6 @@ You can also customize size and colors of the board for better visuality.
 
 I've fully customized the game for different screen sizes by making it fully responsive.
 
-You can try this game from <a href="https://adv-xo.vercel.app/ target="_blank">Here</a> or build it on your machine.
+You can try this game from <a href="https://adv-xo.vercel.app/" target="_blank">Here</a> or build it on your machine.
 
 - **Screenshots**:
