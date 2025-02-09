@@ -24,6 +24,12 @@ You can try this game from <a href="https://adv-xo.vercel.app/" target="_blank">
 
     2. Mobile:
 
-        ![](./Screenshots/2.png)
-        ![](./Screenshots/4.png)
-        ![](./Screenshots/6.png)
+        <table>
+            <tr>
+                <td>![](./Screenshots/2.png)</td>
+                <td>![](./Screenshots/4.png)</td>
+                <td>![](./Screenshots/6.png)</td>
+            </tr>
+        </table>
+
+        
