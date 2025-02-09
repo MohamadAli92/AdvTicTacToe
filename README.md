@@ -15,3 +15,15 @@ I've fully customized the game for different screen sizes by making it fully res
 You can try this game from <a href="https://adv-xo.vercel.app/" target="_blank">Here</a> or build it on your machine.
 
 - **Screenshots**:
+
+    1. Desktop:
+
+        ![](./Screenshots/1.jpg)
+        ![](./Screenshots/3.jpg)
+        ![](./Screenshots/5.jpg)
+
+    2. Mobile:
+
+        ![](./Screenshots/2.jpg)
+        ![](./Screenshots/4.jpg)
+        ![](./Screenshots/6.jpg)
